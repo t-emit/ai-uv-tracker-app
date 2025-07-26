@@ -1,0 +1,286 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+main{
+  padding-top: 80px; 
+}
+
+:root {
+  --primary-color: #3a86ff; /* A slightly softer blue */
+  --secondary-color: #ff00c8;
+  --background-color: #1a1a2e; /* A lighter navy/purple */
+  --text-color: #e0e0e0;
+  --glow-color-1: rgba(58, 134, 255, 0.6);
+  --glow-color-2: rgba(255, 0, 200, 0.6);
+}
+
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  overflow-x: hidden;
+}
+
+/* Animated Gradient Background */
+.app-container {
+  background: linear-gradient(135deg, #1e2a4a, #1a1a2e, #2a1a3a);
+  background-size: 400% 400%;
+  animation: gradientAnimation 15s ease infinite;
+  min-height: 100vh;
+}
+
+@keyframes gradientAnimation {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* General Section Styling */
+.section {
+  padding: 100px 5%;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+h1, h2 {
+  font-weight: 700;
+  text-shadow: 0 0 10px var(--glow-color-1);
+}
+
+/* Glowy Block Effect */
+.glow-block {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 15px;
+  padding: 2rem;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.glow-block:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 10px 30px var(--glow-color-2);
+}
+
+/* Button Styling */
+button {
+  background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 50px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 0 15px var(--glow-color-1);
+}
+
+button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 25px var(--glow-color-1), 0 0 10px var(--secondary-color);
+}
+
+button:disabled {
+  background: #555;
+  box-shadow: none;
+  cursor: not-allowed;
+}
+
+/* Form Styling */
+input, textarea {
+  width: 90%;
+  padding: 12px;
+  margin: 10px 0;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid var(--primary-color);
+  border-radius: 8px;
+  color: var(--text-color);
+}
+
+input:focus, textarea:focus {
+  outline: none;
+  box-shadow: 0 0 15px var(--glow-color-1);
+}
+
+/* Navbar specific styling */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 5%;
+  position: fixed;
+  width: 90%;
+  top: 0;
+  z-index: 1000;
+  background: rgba(10, 10, 26, 0.5);
+  backdrop-filter: blur(10px);
+}
+.navbar-title { 
+  font-size: 1.5rem; 
+  font-weight: 700;
+  overflow: hidden; /* Important for the typing effect */
+  white-space: nowrap; /* Prevents text from wrapping */
+  border-right: .15em solid var(--primary-color); /* The typewriter cursor */
+    width: 0;                 /* Start with no width */
+  text-shadow: 0 0 10px var(--glow-color-1);
+  display: inline-block;
+  
+  /* --- THE KEY CHANGES ARE HERE --- */
+   animation: 
+    typing-deleting 9s steps(14) infinite, /* 14 steps for "AI UV Tracker" */
+    blink-caret 0.75s step-end infinite;   /* The cursor blinks infinitely */
+}
+
+/* New keyframes for typing and deleting */
+@keyframes typing-deleting {
+  0%, 100% { 
+    width: 0; /* Start and end with no text visible */
+  }
+  50%, 90% { 
+    width: 7em; /* Text is fully visible for a duration. Adjust this value to fit "AI UV Tracker" */
+  }
+}
+
+/* The typing effect */
+@keyframes typing {
+  from { width: 0 }
+  to { width: 9.5em;
+   border-right-color: transparent;  } /* Adjust this width to match the length of your title */
+}
+
+/* The typewriter cursor effect */
+@keyframes blink-caret {
+  from, to { border-color: transparent }
+  50% { border-color: var(--primary-color); }
+}
+
+.navbar-links {
+  display: flex;
+  align-items: center; /* This helps align the logout button */
+}
+
+.navbar-links a { margin: 0 15px; color: var(--text-color); text-decoration: none; transition: color 0.3s ease; }
+.navbar-links a:hover { color: var(--primary-color); }
+
+/* About Me Section - Image Slider */
+.about-me-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+}
+.about-me-text { max-width: 800px; }
+/* ... (all your other CSS rules are fine) ... */
+
+
+/* --- UPDATED STYLING FOR THE IMAGE SLIDER --- */
+.image-slider-container {
+  width: 100%;
+  max-width: 600px;
+  height: auto;
+  /* aspect-ratio: 3 / 4; or 4 / 5 depending on your image */
+  border-radius: 15px;
+  overflow: hidden;
+  border: 2px solid var(--primary-color);
+  box-shadow: 0 0 20px var(--glow-color-1);
+  position: relative;
+  z-index: 1;
+}
+
+
+/* 
+  This rule ensures the images inside the component are scaled
+  correctly to cover the container.
+*/
+.image-slider-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain !important;
+  object-position: top center; 
+}
+
+/* ------------------------------------------- */
+
+
+/* ... (rest of your CSS file) ... */
+
+/* FAQ Section */
+.faq-item {
+  width: 100%;
+  max-width: 800px;
+  margin-bottom: 1rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  text-align: left;
+}
+.faq-question {
+  width: 100%;
+  padding: 1rem;
+  background: none;
+  border: none;
+  color: var(--text-color);
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+}
+.faq-answer {
+  padding: 0 1rem 1rem 1rem;
+  color: #b0b0b0;
+}
+
+/* Footer */
+.footer {
+  padding: 2rem 5%;
+  text-align: center;
+}
+.footer-links { margin-bottom: 1rem; }
+.footer-links a { margin: 0 15px; color: var(--text-color); }
+.footer-email { font-size: 1.5rem; color: var(--text-color); transition: color 0.3s ease; }
+.footer-email:hover { color: var(--primary-color); }
+
+/* --- NEW LOGOUT BUTTON STYLING --- */
+.logout-button {
+  background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+  color: white;
+  border: none;
+  padding: 8px 16px; /* Slightly smaller for the navbar */
+  border-radius: 50px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  margin-left: 20px; /* Space it from the other links */
+  box-shadow: 0 0 10px var(--glow-color-1);
+}
+
+.logout-button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 20px var(--glow-color-1);
+}
+
+/* --- FILE UPLOAD STYLING --- */
+.upload-area {
+  border: 2px dashed var(--primary-color);
+  border-radius: 15px;
+  padding: 2rem;
+  width: 90%;
+  max-width: 400px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+.upload-area:hover {
+  background-color: rgba(58, 134, 255, 0.1);
+}
+.upload-area p {
+  margin: 0;
+  font-weight: 600;
+}
+.upload-area input[type="file"] {
+  display: none;
+}
