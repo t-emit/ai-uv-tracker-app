@@ -7,7 +7,7 @@ import requests
 import os
 
 # The public URL to your model file from the GitHub Release
-MODEL_URL = "https://github.com/t-emit/ai-uv-tracker-app/releases/tag/V1.0.0/skin_model_v2_balanced.h5"
+MODEL_URL = "https://drive.google.com/uc?export=download&id=1kH3D8z1TkBtyA6PDxAFQi4yfXByCbWKs"
 MODEL_DIR = Path("ml_model")
 MODEL_PATH = MODEL_DIR / "skin_model_v2_balanced.h5"
 
