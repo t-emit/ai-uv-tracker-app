@@ -5,7 +5,7 @@ motor
 passlib[bcrypt]
 python-jose[cryptography]
 pydantic[email]
-tensorflow
+tensorflow-cpu
 numpy==1.26.4  # Let's lock the version that was successfully installed
 Pillow
 python-multipart
