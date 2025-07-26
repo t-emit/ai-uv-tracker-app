@@ -3,7 +3,9 @@ import axios from 'axios';
 // import Webcam from 'react-webcam';
 import { motion } from 'framer-motion';
 
-const API_URL = "http://127.0.0.1:8000"; // Your backend URL
+ // ...
+const API_URL = process.env.REACT_APP_API_URL || "http://127.0.0.1:8000";
+// ...; // Your backend URL
 
 // src/components/Hero.js
 
