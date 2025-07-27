@@ -2,6 +2,10 @@ import React from 'react';
 import { motion } from 'framer-motion';
 
 const Feedback = () => {
+   // --- DYNAMIC REDIRECT URL ---
+  // window.location.origin will be "http://localhost:3000" on local
+  // and "https://your-site.vercel.app" on production.
+  const redirectUrl = `${window.location.origin}/thank-you`;
   return (
     <section id="feedback" className="section">
       <motion.div 
@@ -21,8 +25,8 @@ const Feedback = () => {
           {/* Your unique access key from your .env file */}
           <input type="hidden" name="access_key" value={process.env.REACT_APP_WEB3FORMS_ACCESS_KEY} />
           
-          {/* This tells Web3Forms where to send the user after a successful submission */}
-          <input type="hidden" name="redirect" value="http://localhost:3000/thank-you" />
+           {/* Use the dynamic redirect URL */}
+          <input type="hidden" name="redirect" value={redirectUrl} />
           
           {/* Form fields for the user */}
           <input type="text" name="name" placeholder="Your Name" required />

@@ -8,6 +8,8 @@ import About from './components/About';
 import FAQ from './components/FAQ';
 import Feedback from './components/Feedback';
 import Footer from './components/Footer';
+import LoginPage from './LoginPage';  
+import TrackerPage from './TrackerPage';
 import ThankYou from './components/Tnakyou'; // Make sure this path is correct
 
 // Import your main CSS file
@@ -60,11 +62,20 @@ function App() {
   return (
     <Router>
       <Routes>
-        {/* Route for the main page */}
-        <Route path="/" element={<MainPage />} />
-        
-        {/* Route for the thank you page */}
+        {/* The login page is now at the '/login' route */}
+        <Route path="/login" element={<LoginPage />} />
+
+        {/* The main tracker page is now at the '/tracker' route */}
+        <Route path="/tracker" element={<TrackerPage />} />
+
+        {/* The thank you page */}
         <Route path="/thank-you" element={<ThankYou />} />
+        
+        {/* Default route: redirect to login if not logged in, or tracker if logged in */}
+        <Route 
+          path="/" 
+          element={localStorage.getItem('authToken') ? <Navigate to="/tracker" /> : <Navigate to="/login" />} 
+        />
       </Routes>
     </Router>
   );
