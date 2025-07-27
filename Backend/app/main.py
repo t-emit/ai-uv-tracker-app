@@ -9,7 +9,7 @@ app = FastAPI(title="AI UV Tracker API")
 origins = [
     "http://localhost:3000", # Your React app's origin
     "http://localhost:3001",
-    "https://ai-uv-tracker-app.vercel.app/"
+    "https://ai-uv-tracker-app.vercel.app"
 ]
 app.add_middleware(
     CORSMiddleware,
