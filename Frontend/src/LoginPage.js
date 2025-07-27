@@ -32,17 +32,30 @@ const LoginPage = () => {
     }
 
     const endpoint = isLoginView ? '/auth/login' : '/auth/signup';
-    try {
-      const response = await axios.post(`${API_URL}${endpoint}`, { email, password });
-      if (isLoginView) {
-        handleLoginSuccess(response.data.access_token);
-      } else {
-        alert('Signup successful! Please log in.');
-        setIsLoginView(true);
-      }
-    } catch (err) {
-      // Your robust error handling logic here...
+  // --- START OF THE CHANGE ---
+  try {
+    const response = await axios.post(`${API_URL}${endpoint}`, { email, password });
+    if (isLoginView) {
+      handleLoginSuccess(response.data.access_token);
+    } else {
+      // On successful signup, switch to the login view and show a message
+      alert('Signup successful! Please log in.');
+      setIsLoginView(true);
+      // Clear form fields for login
+      setPassword('');
+      setConfirmPassword('');
     }
+  } catch (err) {
+    // This is the crucial part that was missing!
+    if (err.response && err.response.data && err.response.data.detail) {
+      // Use the specific error message from the FastAPI backend
+      setError(err.response.data.detail);
+    } else {
+      // A generic fallback error message
+      setError('An unknown error occurred. Please try again.');
+    }
+  }
+  // --- END OF THE CHANGE ---
   };
 
   return (
