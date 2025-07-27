@@ -4,11 +4,11 @@ import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
 
 // Import your components
-import Navbar from '../components/Navbar';
-import About from '../components/About';
-import FAQ from '../components/FAQ';
-import Feedback from '../components/Feedback';
-import Footer from '../components/Footer';
+import Navbar from './components/Navbar';
+import About from './components/About';
+import FAQ from './components/FAQ';
+import Feedback from './components/Feedback';
+import Footer from './components/Footer';
 import './App.css';
 
 const API_URL = process.env.REACT_APP_API_URL || "http://127.0.0.1:8000";
