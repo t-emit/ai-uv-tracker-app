@@ -2,6 +2,18 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from .routers import auth, predict
 from .ml.model import skin_model
+import os # <--- ADD THIS IMPORT
+
+# --- START OF TEMPORARY DEBUGGING CODE ---
+# This will print the values that your Render server is actually seeing.
+# It will print "None" if the variable is not found.
+print("---- CHECKING RENDER ENV VARIABLES ----")
+print(f"MONGO_CONNECTION_STRING is set: {os.environ.get('MONGO_CONNECTION_STRING') is not None}")
+print(f"SECRET_KEY is set: {os.environ.get('SECRET_KEY') is not None}")
+print(f"ALGORITHM is set: {os.environ.get('ALGORITHM') is not None}")
+print(f"ACCESS_TOKEN_EXPIRE_MINUTES is set: {os.environ.get('ACCESS_TOKEN_EXPIRE_MINUTES') is not None}")
+print("---- FINISHED CHECKING ----")
+# --- END OF TEMPORARY DEBUGGING CODE ---
 
 app = FastAPI(title="AI UV Tracker API")
 
