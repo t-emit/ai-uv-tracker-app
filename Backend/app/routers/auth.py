@@ -3,7 +3,7 @@
 from fastapi import APIRouter, Depends, HTTPException, status
 # We no longer need OAuth2PasswordRequestForm
 from datetime import timedelta
-from ..core.security import verify_password, create_access_token
+from ..core.security import verify_password, create_access_token, get_password_hash
 from ..core.config import settings
 # Import the new UserLogin model
 from ..models.user import UserCreate, Token, UserInDB, UserLogin 
